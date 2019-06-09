@@ -7,7 +7,7 @@ var myApp = angular.module("myModule", ["ngRoute"])
 
         $routeProvider.when("/home", { templateUrl: "../Templates/home.html", controller: "homeController" })
             .when("/courses", { templateUrl: "../Templates/courses.html", controller: "coursesController" })
-            .when("/students", { templateUrl: "../Templates/students.html", controller: "studentsController" })
+            .when("/students", { templateUrl: "../Templates/students.html", controller: "studentsController as studentsCtrl" })
             .when("/students/:id", { templateUrl: "../Templates/studentDetails.html", controller: "studentDetailsController as studentDetailsCtrl" }) // we can use controller as syntax
             .otherwise({ redirectTo: "/home" })
         $locationProvider.html5Mode(true);
@@ -19,7 +19,7 @@ var myApp = angular.module("myModule", ["ngRoute"])
     .controller("coursesController", function ($scope) {
         $scope.courses = ["C#", "VB.NET", "ASP.NET", "SQL Server", "AngularJS", "JavaScript"];
     })
-    .controller("studentsController", function ($scope, $http, $route) {
+    .controller("studentsController", function ($http, $route) {
         
         // to reload list when click on the students link, it will refresh the controller only
         var vm = this;
@@ -27,7 +27,7 @@ var myApp = angular.module("myModule", ["ngRoute"])
         //-------------------------------------------------------------------------------
         $http.get("https://my-json-server.typicode.com/mrmak666/myJsApp/employees")
             .then(function (response) {
-                $scope.students = response.data;
+                vm.students = response.data;
             })
 
 
