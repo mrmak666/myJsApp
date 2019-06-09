@@ -1,0 +1,6 @@
+# Node Modules could installed later by using: > npm install
+node_modules/
+
+# bypass big lib versions:
+angular-route.js
+angular.js

@@ -1,0 +1,18 @@
+{
+  "name": "angularrouting",
+  "version": "1.0.0",
+  "description": "Node Testing Host",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "author": "Mr.MAK",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
