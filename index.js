@@ -39,12 +39,14 @@ const server = http.createServer((req, res) => {
     //   res.end(JSON.stringify(users));
     // }
     // Build file path
+  
+  
     let filePath = path.join(
         __dirname,
         "public",
         req.url === "/" ? "index.html" : req.url
     );
-
+    
     // Extension of file
     let extname = path.extname(filePath);
 
@@ -71,7 +73,12 @@ const server = http.createServer((req, res) => {
     }
 
     // Check if contentType is text/html but no .html file extension
-    if (contentType == "text/html" && extname == "") filePath += ".html";
+    if (contentType == "text/html" && extname == "") 
+    {
+        //filePath= filePath.replace("public", "public/Template");
+        //if(path.parse(filePath).base.length>2) filePath+=".html";
+        filePath="index.html";
+    }
 
     // log the filePath
     console.log(filePath);
